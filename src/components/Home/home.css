@@ -70,13 +70,6 @@
   }
 }
 
-.Home__loading_contents div {
-  border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
-  background-color: #b8b8b8;
-  opacity: 0.3;
-}
-
 .Home__button {
   margin-bottom: 16px;
   text-align: center;

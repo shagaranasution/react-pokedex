@@ -1,8 +1,76 @@
 .Detail {
 }
 
-.Detail__back {
+.Detail__button-back {
   color: #f1356d;
+  padding: 0px;
   font-size: 16px;
   font-weight: 500;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.Detail__button-back:focus {
+  outline: none;
+}
+
+.Detail__contents {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(30px, auto);
+  grid-gap: 16px;
+}
+
+.Detail__name {
+  text-transform: capitalize;
+  grid-column: 3/8;
+}
+
+.Detail__image {
+  grid-column: 1/3;
+}
+
+.Detail__image img {
+  width: 100%;
+}
+
+.Detail__stat {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(30px, auto);
+  grid-gap: 8px;
+  grid-column: 3/8;
+}
+
+.Detail__stat-label {
+  grid-column: 1/2;
+  text-transform: capitalize;
+}
+
+.Detail__stat-bar {
+  grid-column: 2/3;
+  text-align: right;
+}
+
+.Detail__devider {
+  grid-column: 1/8;
+  align-self: center;
+}
+
+.Detail__contents h3 {
+  grid-column: 1/8;
+  text-align: center;
+}
+
+.Detail__profile-label {
+  grid-column: 2/3;
+}
+
+.Detail__profile-dimension {
+  grid-column: 3/7;
+}
+
+.Detail__profile-type {
+  text-transform: capitalize;
 }

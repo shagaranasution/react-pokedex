@@ -31,12 +31,12 @@ const Home = () => {
 
       return pokemonRecord
     }))
-    console.log(pokemonData)
+
     setPokemonData(pokemonData)
   }
 
   const handleChange = (e) => {
-    setName(e.target.value)
+    setName(e.target.value.toLowerCase())
   }
 
   const handleSearch = async () => {
@@ -100,8 +100,18 @@ const Home = () => {
       </div>
       {
         isLoading ? 
-          <div className="Home__loading_contents">
-            <div></div><div></div><div></div><div></div>
+          <div className="Home__contents">
+            {
+              [...Array(4).keys()].map((value, idx) => {
+                return (
+                  <div className="loading-state" key={idx} />
+                )
+              })
+            }
+            {/* <div className="loading-state "/>
+            <div className="loading-state "/>
+            <div className="loading-state "/>
+            <div className="loading-state "/> */}
           </div> :
           <div className="Home__contents">
             {

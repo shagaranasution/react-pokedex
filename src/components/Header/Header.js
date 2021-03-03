@@ -1,14 +1,14 @@
+import { Link } from 'react-router-dom'
+
 import './header.css'
 
 const Header = () => {
   return (
     <div className="Header">
       <div className="Header__contents">
-        <h1>Pokedex</h1>
-        {/* <input 
-          type="text"
-          placeholder="Apa pokemon yang mau kamu cari?"
-          /> */}
+        <Link to="/">
+          <h1>Pokedex</h1>
+        </Link>
       </div>
     </div>
   )
