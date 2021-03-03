@@ -5,10 +5,10 @@ const Header = () => {
     <div className="Header">
       <div className="Header__contents">
         <h1>Pokedex</h1>
-        <input 
+        {/* <input 
           type="text"
           placeholder="Apa pokemon yang mau kamu cari?"
-          />
+          /> */}
       </div>
     </div>
   )

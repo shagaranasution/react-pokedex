@@ -7,6 +7,7 @@
   max-width: 900px;
   height: 100%;
   margin: 0 auto;
+  padding: 0 20px;
   text-align: center;
   display: flex;
   justify-content: space-between;
@@ -17,7 +18,7 @@
   color: #ffffff;
 }
 
-.Header__contents input {
+/* .Header__contents input {
   min-width: 300px;
   padding: 6px 10px;
   border: 1px solid #ddd;
@@ -32,9 +33,4 @@
 
 .Header__contents input:focus {
   outline: none;
-}
-
-::placeholder {
-  color: #333333;
-  opacity: 0.5;
-}
+} */
