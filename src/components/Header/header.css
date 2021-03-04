@@ -17,20 +17,3 @@
 .Header__contents h1 {
   color: #ffffff;
 }
-
-/* .Header__contents input {
-  min-width: 300px;
-  padding: 6px 10px;
-  border: 1px solid #ddd;
-  box-sizing: border-box;
-  display: block;
-  border-radius: 4px;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: hidden;
-}
-
-.Header__contents input:focus {
-  outline: none;
-} */

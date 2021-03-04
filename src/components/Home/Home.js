@@ -40,8 +40,8 @@ const Home = () => {
     setName(e.target.value.toLowerCase())
   }
 
-  const handleSearch = async () => {
-    const data = await getPokemon(initialURL + '/' + name)
+  const handleSearch = async (searchedName) => {
+    const data = await getPokemon(initialURL + '/' + searchedName)
 
     setIsLoading(true)
 
@@ -55,6 +55,7 @@ const Home = () => {
       setPrevUrl(data.previous)
     }
     
+    setName(searchedName)
     setIsLoading(false)
   }
 
@@ -93,10 +94,14 @@ const Home = () => {
         <input 
           type="text"
           placeholder="Type pokemon's name you are looking here"
+          value={name}
           onChange={handleChange}
           />
-        <button onClick={handleSearch}>
+        <button className="Home__btn Home__btn-search" onClick={() => handleSearch(name)}>
           Search
+        </button>
+        <button className=" Home__btn Home__btn-reset" onClick={() => handleSearch('')}>
+          Reset
         </button>
       </div>
       {
@@ -109,15 +114,11 @@ const Home = () => {
                 )
               })
             }
-            {/* <div className="loading-state "/>
-            <div className="loading-state "/>
-            <div className="loading-state "/>
-            <div className="loading-state "/> */}
           </div> :
           <div className="Home__contents">
             {
               pokemonData.map((pokemon) => {
-                return  <Card key={pokemon.id} pokemon={pokemon} />
+                return <Card key={pokemon.id} pokemon={pokemon} />
               })
             }
           </div>
