@@ -13,3 +13,8 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.NavBar a:hover {
+  color: #ffffff;
+  background-color: #f1356d;
+}
