@@ -19,7 +19,6 @@ const PokemonDetail = () => {
     const fetchData = async () => {
       let data = await getPokemon(URL)
 
-      console.log(data)
       setPokemon(data)
       setIsLoading(false)
     }
@@ -46,16 +45,6 @@ const PokemonDetail = () => {
             <img src={pokemon.sprites.front_default} alt=''/>
           </div>
           <div className='Detail__stat'>
-            {/* {
-              pokemon.stats.map((statistic) => {
-                return (
-                  <React.Fragment key={statistic.stat.name}>
-                    <div className='Detail__stat-label'>{statistic.stat.name}</div>
-                    <div className="Detail__stat-bar">{statistic.base_stat}/100</div>
-                  </React.Fragment>
-                )
-              })
-            } */}
             {
               <PokemonStatistics statistics={pokemon.stats} />
             }

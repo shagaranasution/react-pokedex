@@ -1,0 +1,22 @@
+.ComparePokemons {
+}
+
+.ComparePokemons h2 {
+  margin-bottom: 16px;
+}
+
+.ComparePokemons__contents {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(30px, auto);
+  grid-gap: 16px;
+}
+
+.ComparePokemons__image {
+  text-align: center;
+}
+
+.ComparePokemons__name {
+  text-align: center;
+  text-transform: capitalize;
+}
