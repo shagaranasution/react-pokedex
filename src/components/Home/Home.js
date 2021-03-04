@@ -11,6 +11,7 @@ const Home = () => {
   const [nextUrl, setNextUrl] = useState('')
   const [prevUrl, setPrevUrl] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  
   const initialURL = 'https://pokeapi.co/api/v2/pokemon'
 
   useEffect(() => {
