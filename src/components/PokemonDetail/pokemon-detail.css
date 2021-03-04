@@ -1,14 +1,9 @@
 .Detail {
 }
 
-.Detail__button-back {
-  color: #f1356d;
-  padding: 0px;
-  font-size: 16px;
-  font-weight: 500;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+.Detail__menu a:hover {
+  color: #ffffff;
+  background-color: #f1356d;
 }
 
 .Detail__button-back:focus {

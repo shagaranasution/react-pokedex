@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getPokemon } from '../../services/pokemon'
 
+import NavBar from '../NavBar'
 
 import './pokemon-detail.css'
 
 const PokemonDetail = () => {
   const { id } = useParams()
-  const history = useHistory()
 
   const [pokemon, setPokemon] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -25,15 +25,9 @@ const PokemonDetail = () => {
     fetchData()
   }, [URL])
 
-  const handleClick = () => {
-    history.push('/')
-  }
-
   return (
     <div className="Detail">
-      <button className="Detail__button-back" onClick={handleClick}>
-        Home
-      </button>
+      <NavBar />
       {isLoading &&
         <div className='Detail__contents'>
           <div className='Detail__name loading-state'/>
