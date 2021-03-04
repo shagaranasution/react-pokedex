@@ -1,11 +1,6 @@
 .Detail {
 }
 
-.Detail__menu a:hover {
-  color: #ffffff;
-  background-color: #f1356d;
-}
-
 .Detail__button-back:focus {
   outline: none;
 }
@@ -32,10 +27,7 @@
 
 .Detail__stat {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(30px, auto);
-  grid-gap: 8px;
-  grid-column: 3/8;
+  grid-column: 3/7;
 }
 
 .Detail__stat-label {

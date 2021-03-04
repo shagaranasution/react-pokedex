@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getPokemon } from '../../services/pokemon'
 
 import NavBar from '../NavBar'
+import PokemonStatistics from "../PokemonStatistics";
 
 import './pokemon-detail.css'
 
@@ -45,7 +46,7 @@ const PokemonDetail = () => {
             <img src={pokemon.sprites.front_default} alt=''/>
           </div>
           <div className='Detail__stat'>
-            {
+            {/* {
               pokemon.stats.map((statistic) => {
                 return (
                   <React.Fragment key={statistic.stat.name}>
@@ -54,6 +55,9 @@ const PokemonDetail = () => {
                   </React.Fragment>
                 )
               })
+            } */}
+            {
+              <PokemonStatistics statistics={pokemon.stats} />
             }
           </div>
           <div className="Detail__devider">
