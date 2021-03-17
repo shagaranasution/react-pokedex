@@ -7,7 +7,7 @@ const ErrorPlaceholder = () => {
         Opps!
       </p>
       <p className="ErrorPlaceholder__body">
-      Sorry, something is wrong. Could not fetch the data.
+        There is no data to show. Please reload the page.
       </p>
     </div>
   )

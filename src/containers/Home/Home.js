@@ -25,6 +25,7 @@ const Home = () => {
         setNextUrl(response.next)
         setPrevUrl(response.previous)
         setIsLoading(false)
+        setError(null)
       } catch (err) {
         setError(err)
         setIsLoading(false)
@@ -51,6 +52,7 @@ const Home = () => {
     const data = await fetchData(initialURL + '/' + searchedName)
 
     setIsLoading(true)
+    setError(null)
 
     if(!data.results) {
       setPokemonData([data])
@@ -73,12 +75,18 @@ const Home = () => {
 
     setIsLoading(true)
 
-    let data = await fetchData(nextUrl)
+    try {
+      let data = await fetchData(nextUrl)
 
-    await loadPokemon(data.results)
-    setNextUrl(data.next)
-    setPrevUrl(data.previous)
-    setIsLoading(false)
+      await loadPokemon(data.results)
+      setNextUrl(data.next)
+      setPrevUrl(data.previous)
+      setIsLoading(false)
+      setError(null)
+    } catch (err) {
+      setError(err)
+      setIsLoading(false)
+    }
   }
 
   const handlePrev = async () => {
@@ -88,11 +96,53 @@ const Home = () => {
 
     setIsLoading(true)
 
-    let data = await fetchData(prevUrl)
-    await loadPokemon(data.results)
-    setNextUrl(data.next)
-    setPrevUrl(data.previous)
-    setIsLoading(false)
+    try {
+      let data = await fetchData(prevUrl)
+      await loadPokemon(data.results)
+      setNextUrl(data.next)
+      setPrevUrl(data.previous)
+      setIsLoading(false)
+      setError(null)
+    } catch (err) {
+      setError(err)
+      setIsLoading(false)
+    }
+  }
+
+  const renderLoadingComponent = () => {
+    if(isLoading && !error) {
+      return (
+        <div className="Home__contents">
+          {
+            [...Array(4).keys()].map((value, idx) => {
+              return (
+                <div className="loading-state" key={idx} />
+              )
+            })
+          }
+        </div>
+      )
+    }
+  }
+
+  const renderPokemonCards = () => {
+    if(!isLoading && !error) {
+      return (
+        <div className="Home__contents">
+            {
+              pokemonData.map((pokemon) => {
+                return <Card key={pokemon.id} pokemon={pokemon} />
+              })
+            }
+        </div>
+      )
+    }
+  }
+
+  const renderErrorPlaceholder = () => {
+    if(error) {
+      return <ErrorPlaceholder />
+    }
   }
 
   return (
@@ -111,30 +161,9 @@ const Home = () => {
           Reset
         </button>
       </div>
-      {error 
-        && 
-           <ErrorPlaceholder />
-          }
-          
-      {
-        isLoading ? 
-          <div className="Home__contents">
-            {
-              [...Array(4).keys()].map((value, idx) => {
-                return (
-                  <div className="loading-state" key={idx} />
-                )
-              })
-            }
-          </div> :
-          <div className="Home__contents">
-            {
-              pokemonData.map((pokemon) => {
-                return <Card key={pokemon.id} pokemon={pokemon} />
-              })
-            }
-          </div>
-      }
+      {renderErrorPlaceholder()}
+      {renderLoadingComponent()}
+      {renderPokemonCards()}
       <div className="Home__button">
         { prevUrl && <button onClick={handlePrev}>Prev</button> }
         { nextUrl && <button onClick={handleNext}>Next</button> }
