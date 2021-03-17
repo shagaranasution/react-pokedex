@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getPokemons, getPokemon } from '../../services/pokemon'
+import { fetchData } from '../../services/pokemon'
 
 import Card from '../Card'
 
@@ -11,28 +11,34 @@ const Home = () => {
   const [nextUrl, setNextUrl] = useState('')
   const [prevUrl, setPrevUrl] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
   
   const initialURL = 'https://pokeapi.co/api/v2/pokemon'
 
   useEffect(() => {
-    const fetchData = async () => {
-      let response = await getPokemons(initialURL)
-      
-      await loadPokemon(response.results)
-      setNextUrl(response.next)
-      setPrevUrl(response.previous)
-      setIsLoading(false)
+    const getData = async () => {
+      try {
+        let response = await fetchData(initialURL)
+
+        await loadPokemon(response.results)
+        setNextUrl(response.next)
+        setPrevUrl(response.previous)
+        setIsLoading(false)
+      } catch (err) {
+        setError(err)
+        setIsLoading(false)
+      }
     }
-    fetchData()
+    getData()
   }, [])
 
   const loadPokemon = async (data) => {
     const pokemonData = await Promise.all(data.map(async (pokemon) => {
-      const pokemonRecord = await getPokemon(pokemon.url)
+      const pokemonRecord = await fetchData(pokemon.url)
 
       return pokemonRecord
     }))
-
+  
     setPokemonData(pokemonData)
   }
 
@@ -41,7 +47,7 @@ const Home = () => {
   }
 
   const handleSearch = async (searchedName) => {
-    const data = await getPokemon(initialURL + '/' + searchedName)
+    const data = await fetchData(initialURL + '/' + searchedName)
 
     setIsLoading(true)
 
@@ -66,7 +72,7 @@ const Home = () => {
 
     setIsLoading(true)
 
-    let data = await getPokemons(nextUrl)
+    let data = await fetchData(nextUrl)
 
     await loadPokemon(data.results)
     setNextUrl(data.next)
@@ -81,7 +87,7 @@ const Home = () => {
 
     setIsLoading(true)
 
-    let data = await getPokemons(prevUrl)
+    let data = await fetchData(prevUrl)
     await loadPokemon(data.results)
     setNextUrl(data.next)
     setPrevUrl(data.previous)
@@ -104,6 +110,7 @@ const Home = () => {
           Reset
         </button>
       </div>
+      {error && <div>Sorry, something is wrong. Could not fetch the data.</div>}
       {
         isLoading ? 
           <div className="Home__contents">

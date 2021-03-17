@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { AsyncPaginate } from 'react-select-async-paginate'
-import { getPokemons, getPokemon } from '../../services/pokemon'
+import { fetchData } from '../../services/pokemon'
 
 import NavBar from '../NavBar'
 import PokemonStatistics from '../PokemonStatistics'
@@ -20,7 +20,7 @@ const ComparePokemons = () => {
   const loadOptions = async (q, loadedOptions, { offset }) => {
     const URL = !!q ? `https://pokeapi.co/api/v2/pokemon/${q}` : `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=20`
     let options = []
-    const response = await getPokemons(URL)
+    const response = await fetchData(URL)
     const hasMore = !!response.results
 
     if(!!response.results) {
@@ -55,13 +55,13 @@ const ComparePokemons = () => {
 
     setFirstPokemonSelected(value)
 
-    const fetchData = async () => {
-      let data = await getPokemon(`https://pokeapi.co/api/v2/pokemon/${value.label}`)
+    const getData = async () => {
+      let data = await fetchData(`https://pokeapi.co/api/v2/pokemon/${value.label}`)
 
       setFirstPokemon(data)
     }
 
-    fetchData()
+    getData()
   }
 
   const handleChangeSecondPokemon = (value) => {
@@ -71,13 +71,13 @@ const ComparePokemons = () => {
 
     setSecondPokemonSelected(value)
 
-    const fetchData = async () => {
-      let data = await getPokemon(`https://pokeapi.co/api/v2/pokemon/${value.label}`)
+    const getData = async () => {
+      let data = await fetchData(`https://pokeapi.co/api/v2/pokemon/${value.label}`)
 
       setSecondPokemon(data)
     }
 
-    fetchData()
+    getData()
   }
 
   const renderPokemonDetail = (pokemon) => {

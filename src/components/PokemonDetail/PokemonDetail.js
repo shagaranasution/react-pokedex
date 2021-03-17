@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getPokemon } from '../../services/pokemon'
+import { fetchData } from '../../services/pokemon'
 
 import NavBar from '../NavBar'
 import PokemonStatistics from "../PokemonStatistics";
@@ -16,13 +16,13 @@ const PokemonDetail = () => {
   const URL = 'https://pokeapi.co/api/v2/pokemon/' + id
 
   useEffect(() => {
-    const fetchData = async () => {
-      let data = await getPokemon(URL)
+    const getData = async () => {
+      let data = await fetchData(URL)
 
       setPokemon(data)
       setIsLoading(false)
     }
-    fetchData()
+    getData()
   }, [URL])
 
   return (
