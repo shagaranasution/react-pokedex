@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { AsyncPaginate } from 'react-select-async-paginate'
 import { fetchData } from '../../services/pokemon'
 
-import NavBar from '../NavBar'
-import PokemonStatistics from '../PokemonStatistics'
+import NavBar from '../../components/NavBar'
+import PokemonStatistics from '../../components/PokemonStatistics'
 
 import './compare-pokemons.css'
 

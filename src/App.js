@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Header from './components/Header'
-import Home from './components/Home'
-import PokemonDetail from './components/PokemonDetail'
-import ComparePokemons from './components/ComparePokemons'
+import Home from './containers/Home'
+import PokemonDetail from './containers/PokemonDetail'
+import ComparePokemons from './containers/ComparePokemons'
 
 function App() {
   return (

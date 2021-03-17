@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { fetchData } from '../../services/pokemon'
 
-import Card from '../Card'
-import ErrorPlaceholder from '../ErrorPlaceholder'
+import Card from '../../components/Card'
+import ErrorPlaceholder from '../../components/ErrorPlaceholder'
 
 import './home.css'
 

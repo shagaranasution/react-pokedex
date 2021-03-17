@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchData } from '../../services/pokemon'
 
-import NavBar from '../NavBar'
-import PokemonStatistics from "../PokemonStatistics";
+import NavBar from '../../components/NavBar'
+import PokemonStatistics from "../../components/PokemonStatistics";
 
 import './pokemon-detail.css'
 
