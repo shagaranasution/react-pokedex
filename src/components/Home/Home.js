@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { fetchData } from '../../services/pokemon'
 
 import Card from '../Card'
+import ErrorPlaceholder from '../ErrorPlaceholder'
 
 import './home.css'
 
@@ -110,7 +111,11 @@ const Home = () => {
           Reset
         </button>
       </div>
-      {error && <div>Sorry, something is wrong. Could not fetch the data.</div>}
+      {error 
+        && 
+           <ErrorPlaceholder />
+          }
+          
       {
         isLoading ? 
           <div className="Home__contents">
