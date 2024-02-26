@@ -2,8 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and using pokeapi.co.
 
-[App Demo](https://nasutionshagara-react-pokedex.herokuapp.com/)
-
 ## Getting Started
 
 ```
